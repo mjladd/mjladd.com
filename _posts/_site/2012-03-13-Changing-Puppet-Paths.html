@@ -1,0 +1,13 @@
+<p>Making some progress in getting our puppet manifests under a capistrano script. Everything has been under version control for awhile, but it&#8217;s been my plan to get a proper deployment configuration set up.</p>
+
+<p>Before I could get capistrano set up, I needed to make sure that puppet was running out of a new path, since cap is going to be removing and recreating symlinks.</p>
+
+<p><code>mkdir /etc/puppet/current</code> <br /> <code>mv /etc/puppet/* /etc/puppet/current</code></p>
+
+<p>/etc/puppet/puppet.conf<br /> <code>[main]</code><br /> <code>    tagmap = /etc/puppet/current/tagmail.conf</code> <br /> <code>[master]</code><br /> <code>    modulepath = /etc/puppet/current/modules</code><br /></p>
+
+<p>The missing piece was remembering that we run the puppetmaster out of passenger and passenger was not finding the path changes.</p>
+
+<p>Adding the following to:<br /> <code>/usr/share/puppet/rack/puppetmaster/config.ru</code><br /> <code>ARGV &lt;&lt; &quot;--confdir=/etc/puppet/current&quot;</code><br /></p>
+
+<p>A restart of httpd and all was well. The puppetmaster was running out of the new configuration path. The next step is to deploy the configuration via capistrano.</p>

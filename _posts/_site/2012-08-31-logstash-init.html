@@ -1,0 +1,50 @@
+<p>Getting init to play nice with running a java jar file as a service was a bit of a hassle. The built-in daemonize function wasn&#8217;t able to correctly create a .pid file so here&#8217;s something that finally worked.</p>
+
+<pre class='bash'><code>#!/bin/sh
+#
+# chkconfig: 2345 70 40
+# description: logstash startup script
+#
+LOGSTASH=/opt/logstash/logstash-1.1.1-monolithic.jar
+CONF=/opt/logstash/logstash.conf
+TMPDIR=/dev/shm
+export TMPDIR
+
+. /etc/rc.d/init.d/functions
+
+RETVAL=0
+
+case &quot;$1&quot; in
+   start)
+      echo -n &quot;Starting logstash: &quot;
+      [ -f $LOGSTASH ] || exit 1
+      daemon &quot;java -jar $LOGSTASH agent -f $CONF &amp;&quot; 2&gt;&gt; /var/log/messages
+      pgrep -f /opt/logstash/logstash-*-monolithic.jar &gt; /var/run/logstash.pid
+      RETVAL=$?
+      echo
+      [ $RETVAL -eq 0 ] &amp;&amp; touch /var/lock/subsys/logstash
+      ;;
+
+  stop)
+      echo -n &quot;Shutting down logstash: &quot;
+      killproc  logstash 
+      RETVAL=$?
+      echo
+      [ $RETVAL -eq 0 ] &amp;&amp; rm -f /var/lock/subsys/logstash
+      ;;
+
+  restart|reload)
+    $0 stop
+    $0 start
+    RETVAL=$?
+    ;;
+  status)
+    status logstash 
+    RETVAL=$?
+    ;;
+  *)
+    echo &quot;Usage: $0 {start|stop|restart|status}&quot;
+    exit 1
+esac
+
+exit $RETVAL</code></pre>

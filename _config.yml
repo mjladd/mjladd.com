@@ -1,0 +1,36 @@
+permalink: /:year/:month/:day/:title 
+auto : true 
+safe : true
+pygments : true
+var :
+  archive_path : /archive.html
+  categories_path : /categories.html
+  tags_path : /tags.html
+  rss_path: /atom.xml
+
+makrdown: redcarpet
+#markdown: kramdown
+#kramdown:
+#  use_coderay: true
+#  coderay:
+#  coderay_css: class
+#  coderay_line_numbers:
+    
+production_url : http://www.mjladd.com 
+title : mjladd 
+
+author :
+  name : Michael Ladd
+  email : mjladd@gmail.com
+  github : mjladd
+  twitter : mjladd 
+
+exclude: [.rbenv-version]
+
+analytics :
+  provider : google 
+  google : 
+     tracking_id : 'UA-538076-1'
+
+comments :
+  provider : false

@@ -1,0 +1,174 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Changing Puppet Config Paths Under Passenger</title>
+    
+    <meta name="author" content="Michael Ladd">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/css/1.4.0/bootstrap.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="/">mjladd</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+    	
+    	<li><a href="/archive.html">Archive</a></li>
+    	
+    
+  
+    
+  
+    
+  
+    
+    	
+    	<li><a href="/music.html">Music</a></li>
+    	
+    
+  
+    
+  
+    
+    	
+    	<li><a href="/pages.html">Pages</a></li>
+    	
+    
+  
+    
+  
+    
+    	
+    	<li><a href="/tags.html">Tags</a></li>
+    	
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h1>Changing Puppet Config Paths Under Passenger </h1>
+</div>
+
+<div class="row">
+  <div class="span10">
+    <p>Making some progress in getting our puppet manifests under a capistrano script. Everything has been under version control for awhile, but it&#8217;s been my plan to get a proper deployment configuration set up.</p>
+
+<p>Before I could get capistrano set up, I needed to make sure that puppet was running out of a new path, since cap is going to be removing and recreating symlinks.</p>
+
+<p><code>mkdir /etc/puppet/current</code> <br /> <code>mv /etc/puppet/* /etc/puppet/current</code></p>
+
+<p>/etc/puppet/puppet.conf<br /> <code>[main]</code><br /> <code>    tagmap = /etc/puppet/current/tagmail.conf</code> <br /> <code>[master]</code><br /> <code>    modulepath = /etc/puppet/current/modules</code><br /></p>
+
+<p>The missing piece was remembering that we run the puppetmaster out of passenger and passenger was not finding the path changes.</p>
+
+<p>Adding the following to:<br /> <code>/usr/share/puppet/rack/puppetmaster/config.ru</code><br /> <code>ARGV &lt;&lt; &quot;--confdir=/etc/puppet/current&quot;</code><br /></p>
+
+<p>A restart of httpd and all was well. The puppetmaster was running out of the new configuration path. The next step is to deploy the configuration via capistrano.</p>
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2012/03/12/new-blog" title="New Blog">&larr; Previous</a></li>
+      
+        <li><a href="">Archive</a></li>
+      
+        <li class="next"><a href="/2012/03/16/Review-of-2011" title="Review of 2011">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>13 March 2012</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="#tech-ref">tech <span>2</span></a></li>
+     
+    	<li><a href="#puppet-ref">puppet <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Michael Ladd 2012 
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-538076-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+  </body>
+</html>
+
+<link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">

@@ -1,0 +1,14 @@
+---
+layout: post
+title: Vacation Day 4 - June 29, 2009 
+category: 
+tags: 
+- personal
+- travel
+type: post
+---
+{% include JB/setup %}
+		
+Back on the road with a four-hour trip to St. Louis. The drive was beautiful and went through the Hoosier National Forrest. We headed directly to the Loop District since we couldn't check in for a couple of hours. We had a good lunch at Fitz's (mighty solid root-beer and creme soda on tap) and stopped at a Subterranean Books (nice bookstore with a small but decent selection).  We walked around most of the Loop District as well as finding a branch of Left-Bank Books which was also small but hosted an appropriate collection of books. 
+
+After finding our way around the city (a lot of which looks like a bomb struck recently, pretty run-down city) we checked in to the hotel. The hotel room was nice and had a great view of the city and the stadium. We walked around the area and couldn't locate anything decent for dinner (it was down to Hooters or Hardee's), but we did see a guy try to break into two cars and shadow someone into the entrance of a condo. We holed up in the room and ordered some miserable local pizza. The special included a salad that was (no kidding) a pile of iceberg lettuce with a few strands of cheese on top.  The food was a low-point in St. Louis and we spent a lot of time looking for anything better.  
