@@ -5,7 +5,7 @@ title: "Resume"
 {% include JB/setup %}
 # Michael Ladd
 
- * <mjladd@gmailcom>
+ * <mjladd@gmail.com>
  * <http://mjladd.com>
  * <http://github.com/mjladd>
 
@@ -23,8 +23,8 @@ Ball State University - Bachelor of Music - 1992-1997 - Performance Scholarship 
 
 **Technical Skills**
  
-Proficient in:  Puppet, VMware <br>
-Experience with: Bash, MongoDB <br>
+Proficient in:  Puppet, VMware, Linux, Nagios <br>
+Experience with: Bash, Ansible, Graphite <br>
 
 ## Experience
 
@@ -33,14 +33,22 @@ Experience with: Bash, MongoDB <br>
 #### Senior Manager of Systems Engineering - Apr 2010 to present
 
 I am a Senior Manager of Systems Engineering at Leapfrog Online. I spend the majority of the time thinking about stability, automation and ensuring that all is running as expected. 
- * Led project to upgrade entire server infrastructure from RHEL 4 to RHEL 6.
- * Built and maintain a custom RPM repository. 
- * Wrote and maintain 25+ puppet modules.
- * Implemnented a multi-layer monitoring system including nagios, ganglia and monit.
- * Installed and maintain puppet-based configuration management system.
- * Support Ruby on Rails and Django applications
- * Suport database systems such as PostgreSQL, MySQL, SQL Server, MongoDB
-
+ * Monitor and maintain reliability of all servers (Linux, Windows) 
+ * Developed installation automation (Kickstart, PXE boot) integrated with local repositories
+ * Build and maintain custom RPM and GEM packages as needed
+ * Responsible for the installation and maintenance of VMware clusters
+ * Led a team of four operations engineers including the establishment of Kanban processes
+ * Led project to replace physical hardware with VMware cluster backed by EqualLogic iSCSI SAN
+ * Established remote monitoring and alerting via Nagios, Graphite, Ganglia, and Monit
+ * Led configuration management effort with Puppet, including writing 40+ custom modules
+ * Served as technical lead for company-wide business intelligence project incorporating IIS and SQL Server
+ * Assisted in the deployment of automated BIND updates for 100+ domains
+ * Establish backup/recovery policies (Amanda, BackupExec) and disaster recovery solutions
+ * Responsible for troubleshooting and triaging system issues in all environments 
+ * Responsible for consistent and accurate performance analysis and capacity planning for all environments
+ * Provide 24/7 operational support for customer facing applications (Ruby/Rails, Django)
+ * Assisted in the planning, design, implementation and migration of RHEL 4 production system to RHEL 6
+ * Responsible for the hiring, training and management of new operations engineers
 
 ### Leapfrog Online Customer Acquisition
 
