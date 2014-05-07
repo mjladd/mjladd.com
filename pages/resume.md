@@ -10,7 +10,7 @@ title: "Resume"
  * <http://github.com/mjladd>
 
 ## Background
-System Admin with over ten years experience. 
+System Admin with over ten years experience managing Linux systems. 
 
 ## Education
 
